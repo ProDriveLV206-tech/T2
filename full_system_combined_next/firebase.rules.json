@@ -1,0 +1,14 @@
+{
+  "rules": {
+    "messages": {
+      "$room": {
+        ".read": "auth != null && root.child('banned').child(auth.uid).val() == null",
+        ".write": "auth != null && root.child('banned').child(auth.uid).val() == null && root.child('server').child('freeze').val() != true"
+      }
+    },
+    "admin_commands": {
+      ".write": "auth != null && (root.child('roles').child(auth.uid).child('role').val() === 'admin' || root.child('roles').child(auth.uid).child('role').val() === 'owner')",
+      ".read": "auth != null && (root.child('roles').child(auth.uid).child('role').val() === 'admin' || root.child('roles').child(auth.uid).child('role').val() === 'owner')"
+    }
+  }
+}
